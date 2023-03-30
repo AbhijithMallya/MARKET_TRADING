@@ -1,0 +1,10 @@
+Without debug :: 
+ flask --app <python file name> run 
+
+
+With debug ::
+ flask --app <python file name> run --debug
+
+In the above .py is not necessary
+
+Shift+1 :: Auto generated HTML structure
