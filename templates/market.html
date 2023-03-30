@@ -60,16 +60,24 @@
                     <th scope="col">NAME</th>
                     <th scope="col">BARCODE</th>
                     <th scope="col">PRICE</th>
+                    <th scope="col">OPTION</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <!-- Your rows inside the table HERE: -->
-                    <tr>
-                        <td>Value for Id</td>
-                        <td>Value for NAME</td>
-                        <td>Value for BARCODE</td>
-                        <td>Value for PRICE</td>
+                {% for i in items%}  
+               
+                <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.barcode}}</td>
+                        <td>{{i.price}} $</td>
+                        <td><button class="btn btn-outline btn-info ">More Info</button>
+                            <button class="btn btn-outline btn-success ">Purchase Item</button>
+                        </td>
                     </tr>
+                {%endfor%}
             </tbody>       
     </table>
     <p></p>

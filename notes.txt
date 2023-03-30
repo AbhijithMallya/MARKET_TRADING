@@ -8,3 +8,7 @@ With debug ::
 In the above .py is not necessary
 
 Shift+1 :: Auto generated HTML structure
+
+Jinja Syntax ::
+    {{}}
+    {%%}
