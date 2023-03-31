@@ -1,8 +1,22 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 #   package      instance
+
 
 # initialising Flask instance
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'
+#uri -->Uniform Resource Identifier
+# db --> database instance
+db = SQLAlchemy(app)
+
+
+class Item(db.Model):
+    id = db.Column( db.Integer(),primary_key = True)
+    name = db.Column(db.String(length=30), nullable=False, unique=True)
+    price = db.Column(db.Integer(), nullable=False)
+    barcode = db.Column(db.String(length=10), nullable=False, unique=True)
+    description = db.Column(db.String(length=100), nullable=False)
 
 
 @app.route('/')
