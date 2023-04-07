@@ -10,5 +10,18 @@ In the above .py is not necessary
 Shift+1 :: Auto generated HTML structure
 
 Jinja Syntax ::
-    {{}}
-    {%%}
+{{url_for('home_page')}}   
+    home_page is the function under the route
+{{}}
+    
+{%%}
+    for writing logic such as for loops
+    
+
+
+**********Verify db instance**************
+from market import app,db
+app.app_context().push()
+db.create_all()
+        #creates database inside instance
+******************************************
