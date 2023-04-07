@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 # initialising Flask instance
-app = Flask(__name__)
+app = Flask(__name__)   
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'
 #uri -->Uniform Resource Identifier
 # db --> database instance
@@ -22,7 +22,7 @@ class Item(db.Model):
 @app.route('/')
 @app.route('/home')
 def home_page():
-    return render_template('home.html')
+    return render_template('home.html' )
 
 
 @app.route('/market')
