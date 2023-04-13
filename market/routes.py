@@ -21,6 +21,7 @@ def market_page():
 @app.route('/register')
 def register_page():
     form = RegisterForm()
+    #form = RegisterForm()
     
 
 
