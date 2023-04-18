@@ -25,3 +25,26 @@ app.app_context().push()
 db.create_all()
         #creates database inside instance
 ******************************************
+
+************Models & Relationship************
+
+from market import app,db
+app.app_context().push()
+db.drop_all()--> delete al tables from the database
+            -->In production we do soft delete
+db.create_all() --> Create tables for the database
+ 
+from market.models import User , Item
+#Create user
+u1 = User(username='Abhijith' , password_hash='12345',email_address='abhi@gmail.com')
+
+db.session.add(u1) --> adds the user
+db.session.commit() --> commits the working tree
+
+
+
+
+
+
+
+*********************************************
