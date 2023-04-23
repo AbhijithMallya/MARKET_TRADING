@@ -41,10 +41,45 @@ u1 = User(username='Abhijith' , password_hash='12345',email_address='abhi@gmail.
 db.session.add(u1) --> adds the user
 db.session.commit() --> commits the working tree
 
+User.query.all() --> Query the User table
+[<User 1>]
+
+Adding Items
+i1 = Item(name='Iphone 14', description='Low Light photograph',barcode='9173684251',price=900)
+db.session.add(i1)
+db.session.commit()
+i2 = Item(name='Redmi Note 12 Pro', description='Panoramic Capture',barcode='8512739051',price=1200)
+db.session.add(i2)
+db.session.commit()
+Item.query.all()
+[Item Iphone 14, Item Redmi Note 12 Pro]
+
+--------------------------------------------
+>>> item1 = Item.query.filter_by(name='Iphone 14') 
+>>> item1
+<flask_sqlalchemy.query.Query object at 0x0000024899058ED0>
+>>> item1 = item1.first() 
+>>> item1
+Item Iphone 14
+>>> item1.owner
+Doesnt reutrn anything as ther is no owner for the item
 
 
+>>> item1.owner=User.query.filter_by(username='Abhijith').first() 
+>>> db.session.add(item1) 
+>>> db.session.commit()   
+[SQL: UPDATE item SET owner=? WHERE item.id = ?]
+[parameters: (<User 1>, 1)]
+(Background on this error at: https://sqlalche.me/e/14/f405) (Background on this error at: https://sqlalche.me/e/14/7s2a)      
 
-
-
-
+Thus we need to rollback
+>>> db.session.rollback()
+>>> item1.owner=User.query.filter_by(username='Abhijith').first().id
+>>> db.session.add(item1)
+>>> db.session.commit()
+>>> item1.owner 
+1
+>>> i = Item.query.filter_by(name='Iphone 14').first()
+>>> i.owned_user
+<User 1>
 *********************************************
