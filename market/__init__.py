@@ -5,6 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 # initialising Flask instance
 app = Flask(__name__)   
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'
+app.config['SECRET_KEY']='6a839465be0f7fc883b3aea9'
+
 #uri -->Uniform Resource Identifier
 # db --> database instance
 db = SQLAlchemy(app)
